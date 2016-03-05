@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.cpp
- * Author: Christian Sandoval
+ * Author: mrgig
  * Created on February 17, 2016, 9:45 AM
  * Purpose:  Our first program
  */
