@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Hello World v2
+PROJECTNAME=PayCheckTernary
 
 # Active Configuration
 DEFAULTCONF=Debug

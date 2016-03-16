@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=Cygwin-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=hello_world_v2
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/hello_world_v2
-CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=helloworldv2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/helloworldv2.tar
+CND_PLATFORM_Debug=Cygwin_4.x-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
+CND_ARTIFACT_NAME_Debug=paycheckternary
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/paycheckternary
+CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
+CND_PACKAGE_NAME_Debug=paycheckternary.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/paycheckternary.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=hello_world_v2
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/hello_world_v2
+CND_ARTIFACT_NAME_Release=paycheckternary
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/paycheckternary
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=helloworldv2.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/helloworldv2.tar
+CND_PACKAGE_NAME_Release=paycheckternary.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/paycheckternary.tar
 #
 # include compiler specific variables
 #
