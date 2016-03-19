@@ -31,33 +31,65 @@ int main(int argc, char** argv)
     
     
     //Different ways out put can be determined
-    if (strcmp(firstN, secondN) < 0)//first less than second and third
+    if ((strcmp(firstN, secondN) < 0) && (strcmp(firstN, thirdN) < 0))//first less than second and third
     {
         cout << "First name: " <<  firstN << endl;
+    }
+    else if (strcmp(firstN, secondN) > 0)
+    {
+        if ((strcmp(firstN, secondN) > 0) && (strcmp(firstN, thirdN) < 0))
+        {
+         cout << "Second Name: " << firstN << endl;
+        }
+        else if ((strcmp(firstN, thirdN) > 0) && ((firstN, secondN) > 0))
+        {
+         cout << "Third Name: " << firstN << endl;
+        }
     }
     if (strcmp(secondN, firstN) < 0 )//second less than first and third
     {
         cout << "First name: " << secondN << endl;
     }
-    if (strcmp(thirdN, firstN ) > 0 )//first greater than second and third
-    {
-        if(strcmp(thirdN, secondN) > 0 )
-        {
-        cout << "First name: " << thirdN << endl;
-        }
-    }
     if (strcmp(thirdN, secondN ) < 0 )//first greater than second and third
     {
         if(strcmp(thirdN, firstN) < 0 )
         {
+        cout << "First name: " << thirdN << endl;
+        }
+    }
+    if (strcmp(thirdN, firstN ) < 0 )//first greater than second and third
+    {
+        if(strcmp(thirdN, secondN) < 0 )
+        {
          cout << "First name: " << thirdN << endl;
+        }
+        else if(strcmp(thirdN, secondN) > 0 )
+        {
+         cout << "Second name: " << thirdN << endl;
         }
     }
     if (strcmp(secondN, firstN) > 0)//second greater than first and third
     {
-        cout << secondN << endl;
+        if (strcmp(secondN, firstN) > 0)
+        {
+            cout << "Third Name: " << secondN << endl;
+        }
+        else if (strcmp(secondN, thirdN) > 0)
+        {
+            cout << "Second Name: " << secondN << endl;
+        }
     }
-
+    if (strcmp(thirdN, firstN) > 0)//second greater than first and third
+    {
+        if (strcmp(thirdN, firstN) > 0)
+        {
+            cout << "Third Name: " << thirdN << endl;
+        }
+        else if (strcmp(thirdN, secondN) > 0)
+        {
+            cout << "Second Name: " << thirdN << endl;
+        }
+    }
     return 0;
 }
 
