@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.cpp
- * Author: mrgig
+ * Author: CHristian Sandoval
  *
  * Created on March 18, 2016, 10:20 PM
  */
