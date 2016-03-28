@@ -28,6 +28,7 @@ int main(int argc, char** argv)
     cout << "Month: " << month << endl;
     cout << "Year: " <<year << endl;
     cout << "\nEquation: " << day << "*" << month << "=" << year << endl;
+    
     //map input with results
     if(year == month * day)
     {
