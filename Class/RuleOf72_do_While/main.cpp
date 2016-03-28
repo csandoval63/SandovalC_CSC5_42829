@@ -46,6 +46,7 @@ int main(int argc, char** argv)
         cout << setw(3) <<nYears << setw(10) << " $" << fv << endl;
     }
     while(fv < 2 * pv);
+    
     //OutPut Results
     cout << "\nBy the rule of 72 it will take " << nComp << " years to double." << endl;
     cout << "The Future Value = $" << fv << endl;

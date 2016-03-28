@@ -45,6 +45,7 @@ int main(int argc, char** argv)
         nYears++;
         cout << setw(3) <<nYears << setw(10) << " $" << fv << endl;
     }
+    
     //OutPut Results
     cout << "\nBy the rule of 72 it will take " << nComp << " years to double." << endl;
     cout << "The Future Value = $" << fv << endl;
