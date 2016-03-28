@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: rcc
+ * Author: Christian Sandoval
  *
  * Created on March 28, 2016, 9:43 AM
  */
