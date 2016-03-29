@@ -33,7 +33,7 @@ int main(int argc, char** argv)
     cout << "What is the width of second rectangle" << endl;
     cin >> recWid2;
     
-    //Equation
+    //Equation.
     recAr1 = recLen1 * recWid1;
     recAr2 = recLen2 * recWid2;
     
