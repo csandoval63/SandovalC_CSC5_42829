@@ -12,39 +12,41 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    //set char size for answer of yes or no
-    const int SIZE = 5;
-    char ansM[SIZE];
-    
-    //declare variables
-    float lotA, lumPen(.62), taxPen(.52), marPen(.50), keptLot;
-    
-    //ask user for lottery winnings ammount
-    cout << "How much is the lottery winnings amount? \n$";
-    cin >> lotA;
-    cin.ignore(256,'\n');
-    //Ask if winner/user is married
-    cout << "Are you married?(enter y for yes or n for no in lower case)" << endl;
-    cin.getline(ansM, SIZE);
-    
-    //Calculates remaining after penalties being taken depending on marriage answer
-    //if answer is yes
-    // string.compare("")==0 // true
-    // string.compare("")!=0 // not true
-    if()
-    {
-        keptLot = (((lotA*(lumPen))*(marPen))*taxPen);
-        cout << "After penalties with marriage you will keep $" << keptLot << endl;
-    }
-    //if answer is no
-    else if('n')
-    {   
-        keptLot = ((lotA*(lumPen))*taxPen);
-        cout << "After penalties with no marriage you will keep $" << keptLot << endl;
-    }
-    else
-    {
-        cout << "Please enter valid marriage response" << endl;
-    }
+    //General Menu Format
+    //Display the selection
+    cout<<"Type 1 to solve problem 1"<<endl;
+    cout<<"Type 2 to solve problem 2"<<endl;
+    cout<<"Type 3 to solve problem 3"<<endl;
+    cout<<"Type anything else to quit with no solutions."<<endl;
+    //Read the choice
+    char choice;
+    cin>>choice;
+    //Solve a problem that has been chosen.
+    switch(choice){
+            case 49:{//Character '1' in Decimal
+                int sum=1+2+3+4+5+6+7+8+9+10;
+                cout<<endl;
+                cout<<"Solution to 1 sum(1->10)="<<sum<<endl;
+                cout<<endl;
+                break;
+            }
+            case 062:{//Character '2' in Octal
+                int prod=1*2*3*4*5*6*7*8*9*10;
+                cout<<endl;
+                cout<<"Solution n!(1->10)="<<prod<<endl;
+                cout<<endl;
+                break;
+            }
+            case 0x33:{//Character '3' in Hex
+                float quot=1.0f/2/3/4/5/6/7/8/9/10;
+                cout<<endl;
+                cout<<"Solution to 3 quot(1->10)="<<quot<<endl;
+                cout<<endl;
+                break;
+            }
+            default:{
+                    cout<<"Exit?"<<endl;
+            }
+    };
     return 0;
 }
