@@ -36,39 +36,53 @@ int main(int argc, char** argv)
     //Solve a problem that has been chosen.
     switch(choice)
     {
-            case 1:
+            case 49:
             {
+                //'1' in decimal
                 const int PI = 	3.14159265358979323846;
                 float cirR, cirAr;
                 cout << endl;
                 cout << "What is the radius of the circle?" << endl;
-                cout << endl;
                 cin >> cirR;
-                cout << endl;
                 cirAr = pow(PI*cirR, 2);
+                cout << "Area of Circle = " << cirAr << endl;
+                break;
+            }
+            case 50:
+            {
+                //'2' in decimal
+                float recW, recL, recArea;
                 cout << endl;
+                cout << "What is the width of the rectangle?" << endl;
+                cin >> recW;
+                cout << "What is the length of the rectangle?" << endl;
+                cin >> recL;
+                recArea = recW * recL;
+                cout << "Area of Rectangle = " << recArea << endl;
                 break;
             }
-            case 2:
+            case 51:
             {
-                int prod=1*2*3*4*5*6*7*8*9*10;
-                cout<<endl;
-                cout<<"Solution n!(1->10)="<<prod<<endl;
-                cout<<endl;
+                //'3' in decimal
+                float triB, triH, triAr;
+                cout << endl;
+                cout << "What is the base of the triangle?" << endl;
+                cin >> triB;
+                cout << "What is the height of the triangle?" << endl;
+                cin >> triH;
+                triAr = (triB * triH) * 0.5;
+                cout << "Area of triangle = " << triAr << endl;
                 break;
             }
-            case 3:
+            case 52:
             {
-                float quot=1.0f/2/3/4/5/6/7/8/9/10;
-                cout<<endl;
-                cout<<"Solution to 3 quot(1->10)="<<quot<<endl;
-                cout<<endl;
-                break;
+                //'4' in decimal
+                    cout<<"Quit"<<endl;
             }
             default:
             {
-                    cout<<"Exit?"<<endl;
-            };
+                    cout<<"Error please input a correct number 1-4?"<<endl;
+            }
     }
     return 0;
 }
