@@ -12,16 +12,16 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-    const int MAX = 177;
-    const int MIN = 0;
-    
     int ascii;
 
-    for(ascii++)
+    for(ascii = 0; ascii <= 177;)
     {
-    cout << char(ascii) << endl;
+       cout << char(ascii++) << char(ascii++) << char(ascii++) << char(ascii++) 
+            << char(ascii++) << char(ascii++) << char(ascii++) << char(ascii++) 
+            << char(ascii++) << char(ascii++) << char(ascii++) << char(ascii++) 
+            << char(ascii++) << char(ascii++) << char(ascii++) << char(ascii++) 
+            << endl;
     }
-    
+
     return 0;
 }
-

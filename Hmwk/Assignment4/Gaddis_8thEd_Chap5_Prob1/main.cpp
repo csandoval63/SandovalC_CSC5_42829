@@ -17,9 +17,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
     //Declare variables
-    float var;
-    int bVars;
-    int sum;
+    int var, bVars, sum;
     
     //Ask user input
     cout << "Please input a positive value" << endl;
@@ -28,11 +26,13 @@ int main(int argc, char** argv)
     //Map functions and results
     if(var <= 50 && var >=1)
     {
-        for(bVars = 1, sum = 0; sum <= var; bVars++ )
+        cout << "All variables before " << var << ": " << endl;
+        for(bVars = 1, sum = 0; bVars <= var; bVars++ )
         {
             sum += bVars;
-            cout << sum;
+            cout << "variables: " << bVars << endl;
         }
+        cout << "Sum of variables + " << var << " = " << sum << endl;
     }
     else if(var < 0) 
     {
