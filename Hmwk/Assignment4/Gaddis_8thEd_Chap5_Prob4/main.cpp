@@ -33,5 +33,5 @@ int main(int argc, char** argv)
 
     cout << "In " << mins << " mins on a treadmill: " << calsum << " burned" << endl;
 
-    return 0;
+    return 5;
 }
