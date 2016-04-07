@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
- * Author: rcc
- *
+ * Author: Christian Sandoval
+ * Sum of all variables before number inputed
  * Created on March 30, 2016, 9:44 AM
  */
 
@@ -11,9 +11,6 @@
 
 using namespace std;
 
-/*
- * 
- */
 int main(int argc, char** argv)
 {
     //Declare variables

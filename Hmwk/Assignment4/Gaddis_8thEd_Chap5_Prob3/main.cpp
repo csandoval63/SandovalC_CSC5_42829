@@ -18,6 +18,7 @@ int main(int argc, char** argv)
 
     cout << "Ocean level over span of 25 years will rise: " << endl;
 
+    //output and map results
     for(years = 1, oRisng = 1.5; years <= 25; years++ )
     {
         sumOyrs = oRisng * years;

@@ -5,7 +5,7 @@
  * Created on April 3, 2016, 10:49 PM
  */
 
-
+//system libraries
 #include <cstdlib>
 #include <iostream>
 
@@ -18,6 +18,7 @@ int main(int argc, char** argv)
 
     cout << "Membership cost over span of 6 years raised by 4% " << endl;
 
+    //map output and results...
     for(years = 0, memfee = 2400; years <= 5; )
     {
         years ++;

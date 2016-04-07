@@ -6,11 +6,12 @@
 
 /* 
  * File:   main.cpp
- * Author: mrgig
- *
+ * Author: Christian Sandoval
+ * Purpose Calories burned
  * Created on April 3, 2016, 9:38 PM
  */
 
+//system libraries
 #include <cstdlib>
 #include <iostream>
 
@@ -24,6 +25,7 @@ int main(int argc, char** argv)
 
     cout << "Calories burned over span of 30 mins on a treadmill: " << endl;
 
+    //output and map results
     for(mins = 0, calspm = 3.6; mins <= 25; )
     {
         mins += 5;
