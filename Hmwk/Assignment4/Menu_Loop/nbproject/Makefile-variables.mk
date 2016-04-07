@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin_1-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_1-Windows
-CND_ARTIFACT_NAME_Debug=gaddis_8thed_chap5_prob4
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_1-Windows/gaddis_8thed_chap5_prob4
+CND_ARTIFACT_NAME_Debug=menu_loop
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_1-Windows/menu_loop
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_1-Windows/package
-CND_PACKAGE_NAME_Debug=gaddis8thedchap5prob4.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_1-Windows/package/gaddis8thedchap5prob4.tar
+CND_PACKAGE_NAME_Debug=menuloop.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_1-Windows/package/menuloop.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin_1-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_1-Windows
-CND_ARTIFACT_NAME_Release=gaddis_8thed_chap5_prob4
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_1-Windows/gaddis_8thed_chap5_prob4
+CND_ARTIFACT_NAME_Release=menu_loop
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_1-Windows/menu_loop
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin_1-Windows/package
-CND_PACKAGE_NAME_Release=gaddis8thedchap5prob4.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_1-Windows/package/gaddis8thedchap5prob4.tar
+CND_PACKAGE_NAME_Release=menuloop.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_1-Windows/package/menuloop.tar
 #
 # include compiler specific variables
 #
