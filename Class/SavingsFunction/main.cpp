@@ -152,13 +152,13 @@ float save1(float p, float i, float n)//method 6
 int save6(float &fv, float p, float i, int n)//method 7
 {
     //decalre variables
-    static int  count = 0;
+    static int count = 0;
     fv = p;
     
     //loop on the number
-    for(int years = 0; years < n; years++)
+    for(int years = 1; years <= n; years++)
     {
-        fv*=1+i;
+        fv*=(1+i);
     }
     
     return ++count;
