@@ -156,7 +156,7 @@ int save6(float &fv, float p, float i, int n)//method 7
     fv = p;
     
     //loop on the number
-    for(int years = 1; years < n; years++)
+    for(int years = 0; years < n; years++)
     {
         fv*=1+i;
     }
