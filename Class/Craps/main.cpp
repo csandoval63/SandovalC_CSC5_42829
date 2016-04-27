@@ -50,7 +50,7 @@ int main(int argc, char** argv)
             bool thrwAgn;
             do
             {
-                thrwAgn = true;
+                bool thrwAgn = true;
                 //Randomly generate the throw and the sum
                 unsigned short die1 = rand() % 6 + 1;//Number between [1-6]
                 unsigned short die2 = rand() % 6 + 1;//Number between [1-6]
@@ -76,8 +76,8 @@ int main(int argc, char** argv)
     cout << "Number of wins = " << win << endl;
     cout << "Number of losses = " << lose << endl;
     cout << "The total Games = " << (win+lose) << endl;
-    cout << "Percentage games = " << (100.0f * (win/nGames)) << "%" <<endl;
-    
+    cout << "Percentage games = " << 100.0f * win/nGames << "%" <<endl;
+    cout << "Percentage games = " << 100.0f * lose/nGames << "%" <<endl;
 
     //Exit Stage Right!
     return 0;
