@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Christian Sandoval
  * Created on April 27, 2016, 8:05 AM
- * Purpose:  Using Random numbers, check out stats of dice throwing
+ * Purpose:  Pokemon Battle/Dragons Simulation
  * Check list at bottom...
  */
 
@@ -13,6 +13,7 @@
 #include <ctime>   //Utilize time to set the seed
 #include <fstream> //Writing to a file
 #include <iomanip> //Formatting output
+
 using namespace std;
 
 //User Libraries
@@ -24,9 +25,13 @@ unsigned short accnum(unsigned short);
 void dragchoi();
 void accnum();
 void hitsuc();
+//Attacks Menus
+void fireAtk();
+//Basic attacks
+//void punch();
 //Health
-//void dragHH();
-//void dragCH();
+void playHp();
+void comHp();
 
 //Note to self The & is used as referencing to link it back to for example the health
 //also move this to bottom when done due to this being an example for reference use
@@ -58,6 +63,8 @@ int main(int argc, char** argv)
     //ask user for choice/bring up menu
     dragchoi();
     //Dragon health Computer health
+    playHp();
+    comHp();
     //  dragCH();
 
     return 0;
@@ -76,7 +83,8 @@ void dragchoi()
             cout<<"Thank you for choosing "<< draCho << " dragon" <<endl;
     //        dragHH();//player's dragon health
             //test hit success rate for attack patterns later add 2 or more attacks for fun
-            hitsuc();
+            fireAtk();
+            playHp();
             cout<<endl;
             break;
         }
@@ -132,7 +140,7 @@ void hitsuc()
     acc = accnum (acc);
     cout << acc << endl;
     bool damage;
-    if (acc < 55 )
+    if (acc < 45 )
     {
         cout << "Miss" << endl;
         damage = false;
@@ -156,6 +164,79 @@ unsigned short accnum(unsigned short acc)
     return acc;
 }
 
+//************Attack menu's******************
+void fireAtk()
+{
+    
+    int fireatt;
+    
+    cout << "--------Attack Menu--------\n"
+            "Press 1 for Flame thrower.\n"
+            "Press 2 for Kick.\n"
+            "Press 3 for Bite.\n"
+            "Press 4 for Punch." << endl;
+
+    cin >> fireatt;
+    
+    switch(fireatt)
+    {
+        case 1:
+        {
+            cout<<endl;
+            cout<<"Thank you for choosing "<< fireatt << " attack" <<endl;
+    //        dragHH();//player's dragon health
+            //test hit success rate for attack patterns later add 2 or more attacks for fun
+            hitsuc();
+            cout<<endl;
+            break;
+        }
+        case 2:
+        {
+            cout<<endl;
+            cout<<"Thank you for choosing " << fireatt << " dragon" <<endl;
+      //      dragHH();//player's dragon health
+            //test hit success rate for attack patterns later add 2 or more attacks for fun
+            hitsuc();
+            cout<<endl;
+            break;
+        }
+        case 3:
+        {
+            cout<<endl;
+            cout<<"Thank you for choosing "<< fireatt << " attack" <<endl;
+       //     dragHH();//player's dragon health
+            //test hit success rate for attack patterns later add 2 or more attacks for fun
+            hitsuc();
+            cout<<endl;
+            break;
+        }
+        case 4:
+        {
+            cout<<endl;
+            cout<<"Thank you for choosing "<< fireatt << " attack" <<endl;
+       //     dragHH();//player's dragon health
+            //test hit success rate for attack patterns later add 2 or more attacks for fun
+            hitsuc();
+            cout<<endl;
+            break;
+        }
+        default:
+        {
+            cout<<"Make a loop so it ask for user input again?"<<endl;
+        }
+    }
+}
+
+void playHp()
+{
+    int plyrHp;
+    plyrHp = 100;
+}
+void comHp()
+{
+    int compHp;
+    compHp = 100;
+}
 /* 
  * ***Check List***
  * Accuracy Done
