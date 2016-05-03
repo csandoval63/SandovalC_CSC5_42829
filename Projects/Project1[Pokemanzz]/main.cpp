@@ -13,6 +13,7 @@
 #include <ctime>   //Utilize time to set the seed
 #include <fstream> //Writing to a file
 #include <iomanip> //Formatting output
+#include <unistd.h>//used to pause time so that random seed generator can differ between pc and player
 
 using namespace std;
 
@@ -23,15 +24,15 @@ using namespace std;
 //Function Prototypes
 unsigned short accnum(unsigned short);
 void dragchoi();
+void comDrag();
 void accnum();
 void hitsuc();
 //Attacks Menus
-void fireAtk();
+void attks();
+void comattk();
 //Basic attacks
 //void punch();
-//Health
-void playHp();
-void comHp();
+//Health system test
 
 //Note to self The & is used as referencing to link it back to for example the health
 //also move this to bottom when done due to this being an example for reference use
@@ -39,18 +40,14 @@ void testHp(int &hHp)
 {
     hHp = hHp - 50;
 }
-
 //Execution Begins Here!
 int main(int argc, char** argv) 
 {
     //Declare variables
-    
-    //Test for the health/damage
     int hHp = 100;
     cout << "Health Before: " <<  hHp << endl;
     testHp(hHp);
     cout << "Health After: " << hHp << endl;
-    
     //Title
     cout << "Prepare to battle choose your 1 dragon wisely!\n"
             "There is Dragon Elemental weaknesses which is multiplied by 1.5\n\n"
@@ -63,8 +60,6 @@ int main(int argc, char** argv)
     //ask user for choice/bring up menu
     dragchoi();
     //Dragon health Computer health
-    playHp();
-    comHp();
     //  dragCH();
 
     return 0;
@@ -73,58 +68,113 @@ int main(int argc, char** argv)
 void dragchoi()
 {
     int draCho;
+    do
+    {
     cin >> draCho;
+        switch(draCho)
+        {
+            case 1:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing the Fire dragon" <<endl;
+        //        dragHH();//player's dragon health
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                //computer picks randomly
+                comDrag();
+                attks();
+                cout<<endl;
+                break;
+            }
+            case 2:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing the Water dragon" <<endl;
+          //      dragHH();//player's dragon health
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                //computer picks randomly
+                comDrag();
+                attks();
+                cout<<endl;
+                break;
+            }
+            case 3:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing the Grass dragon" <<endl;
+           //     dragHH();//player's dragon health
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                //computer picks randomly
+                comDrag();
+                attks();
+                cout<<endl;
+                break;
+            }
+            case 4:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing the Rock dragon" <<endl;
+           //     dragHH();//player's dragon health
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                //computer picks randomly
+                comDrag();
+                attks();
+                cout<<endl;
+                break;
+            }
+            default:
+            {
+                cout<<"Please input proper choice" <<endl;
+            }
+        }
+    }
+        while(draCho > 4);
+}
+
+void comDrag()
+{
+    const int MIN_VALUE = 0, MAX_VALUE = 4;//Sets constant min value and max to give student workable problems
+    int cmDrag;
     
-    switch(draCho)
+    //seed time need for random values within max and min values
+    unsigned seed = time(0);
+    srand(seed);
+    cmDrag = (rand() % (MAX_VALUE - MIN_VALUE + 1)) +MIN_VALUE;
+    switch(cmDrag)
     {
         case 1:
         {
             cout<<endl;
-            cout<<"Thank you for choosing "<< draCho << " dragon" <<endl;
+            cout<<"Computer chose Fire dragon" <<endl;
     //        dragHH();//player's dragon health
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            fireAtk();
-            playHp();
             cout<<endl;
             break;
         }
         case 2:
         {
             cout<<endl;
-            cout<<"Thank you for choosing " << draCho << " dragon" <<endl;
+            cout<<"Computer chose Water dragon" <<endl;
       //      dragHH();//player's dragon health
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            hitsuc();
             cout<<endl;
             break;
         }
         case 3:
         {
             cout<<endl;
-            cout<<"Thank you for choosing "<< draCho << " dragon" <<endl;
+            cout<<"Computer chose  Grass dragon" <<endl;
        //     dragHH();//player's dragon health
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            hitsuc();
             cout<<endl;
             break;
         }
         case 4:
         {
             cout<<endl;
-            cout<<"Thank you for choosing "<< draCho << " dragon" <<endl;
+            cout<<"Computer chose  Rock dragon" <<endl;
        //     dragHH();//player's dragon health
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            hitsuc();
             cout<<endl;
             break;
         }
-        default:
-        {
-            cout<<"Make a loop so it ask for user input again?"<<endl;
-        }
     }
 }
-
 
 /////Attack patterns for hits and misses
 
@@ -139,6 +189,7 @@ void hitsuc()
     //get value of accuracy if number is greater than 55 than hit is a success..
     acc = accnum (acc);
     cout << acc << endl;
+    //accuracy
     bool damage;
     if (acc < 45 )
     {
@@ -165,78 +216,129 @@ unsigned short accnum(unsigned short acc)
 }
 
 //************Attack menu's******************
-void fireAtk()
+void attks()
 {
-    
-    int fireatt;
+    int attk;
     
     cout << "--------Attack Menu--------\n"
-            "Press 1 for Flame thrower.\n"
+            "Press 1 for Elemental Attack.\n"
             "Press 2 for Kick.\n"
             "Press 3 for Bite.\n"
             "Press 4 for Punch." << endl;
+    do
+    {
+        cin >> attk;
+        switch(attk)
+        {
+            case 1:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing "<< attk << " attack" <<endl;
+                hitsuc();
+                sleep(1);
+                comattk();
+                cout<<endl;
+                break;
+            }
+            case 2:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing " << attk << " dragon" <<endl;
+                hitsuc();
+                sleep(1);
+                comattk();
+                cout<<endl;
+            }
+            case 3:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing "<< attk << " attack" <<endl;
+                hitsuc();
+                sleep(1);
+                comattk();
+                cout<<endl;
+                break;
+            }
+            case 4:
+            {
+                cout<<endl;
+                cout<<"Thank you for choosing "<< attk << " attack" <<endl;
+                hitsuc();
+                sleep(1);
+                comattk();
+                cout<<endl;
+                break;
+            }
+            default:
+            {
+                cout<<"Please input proper choice for attack"<<endl;
+            }
+        }
+    }
+        while(attk > 4);
+}
 
-    cin >> fireatt;
+//************Computer Attack******************
+void comattk()
+{
+    const int MIN_VALUE = 0, MAX_VALUE = 4;//Sets constant min value and max to give student workable problems
+    int cmattk;
     
-    switch(fireatt)
+    //seed time need for random values within max and min values
+    unsigned seed = time(0);
+    srand(seed);
+    
+    cmattk = (rand() % (MAX_VALUE - MIN_VALUE + 1)) +MIN_VALUE;
+    
+    switch(cmattk)
     {
         case 1:
         {
             cout<<endl;
-            cout<<"Thank you for choosing "<< fireatt << " attack" <<endl;
+            cout<<"Computer chose Elemental attack" <<endl;
     //        dragHH();//player's dragon health
             //test hit success rate for attack patterns later add 2 or more attacks for fun
             hitsuc();
+            attks();
             cout<<endl;
             break;
         }
         case 2:
         {
             cout<<endl;
-            cout<<"Thank you for choosing " << fireatt << " dragon" <<endl;
+            cout<<"Computer chose Kick dragon" <<endl;
       //      dragHH();//player's dragon health
             //test hit success rate for attack patterns later add 2 or more attacks for fun
             hitsuc();
+            attks();
             cout<<endl;
             break;
         }
         case 3:
         {
             cout<<endl;
-            cout<<"Thank you for choosing "<< fireatt << " attack" <<endl;
+            cout<<"Computer chose Bite attack" <<endl;
        //     dragHH();//player's dragon health
             //test hit success rate for attack patterns later add 2 or more attacks for fun
             hitsuc();
+            attks();
             cout<<endl;
             break;
         }
         case 4:
         {
             cout<<endl;
-            cout<<"Thank you for choosing "<< fireatt << " attack" <<endl;
+            cout<<"Computer chose Punch attack" <<endl;
        //     dragHH();//player's dragon health
             //test hit success rate for attack patterns later add 2 or more attacks for fun
             hitsuc();
+            attks();
             cout<<endl;
             break;
-        }
-        default:
-        {
-            cout<<"Make a loop so it ask for user input again?"<<endl;
         }
     }
 }
 
-void playHp()
-{
-    int plyrHp;
-    plyrHp = 100;
-}
-void comHp()
-{
-    int compHp;
-    compHp = 100;
-}
 /* 
  * ***Check List***
  * Accuracy Done
@@ -247,7 +349,6 @@ void comHp()
  * ***To-do List***
  * Link Accuracy to attacks
  * Weakness system
- * Random computer dragon choice...
  * Damage system/Health
  * Attack Menu
  * Computer random attack menu
