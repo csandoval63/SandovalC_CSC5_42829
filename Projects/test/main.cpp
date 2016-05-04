@@ -31,9 +31,11 @@ void hitsuc();
 void attks();
 void comattk();
 //Basic attacks
+void elattk();
 //void punch();
 //Health system test
-void filePhp();
+//void filePhp();
+void pHpChk();
 
 //Note to self The & is used as referencing to link it back to for example the health
 //also move this to bottom when done due to this being an example for reference use
@@ -179,33 +181,6 @@ void comDrag()
 
 /////Attack patterns for hits and misses
 
-void hitsuc()
-{
-    //Random number generator
-    unsigned short acc;  //attack success is 55+ max value assigned has been 100
-        
-    //random seed
-    srand(static_cast<unsigned int>(time(0)));
-    
-    //get value of accuracy if number is greater than 55 than hit is a success..
-    acc = accnum (acc);
-    cout << acc << endl;
-    //accuracy
-    bool damage;
-    if (acc < 45 )
-    {
-        cout << "Miss" << endl;
-        damage = false;
-        cout << damage << endl;
-    }
-    else if (acc >= 55 )
-    {
-        cout << "Hit" << endl;
-        damage = true;
-        cout << damage << endl;
-    }
-}
-
 //Random number generator with 2 or 1
 unsigned short accnum(unsigned short acc)
 {
@@ -235,8 +210,7 @@ void attks()
             {
                 cout<<endl;
                 cout<<"Thank you for choosing "<< attk << " attack" <<endl;
-                hitsuc();
-                filePhp();
+                elattk();
                 cout<<"Computer is deciding on attack" <<endl;
                 sleep(1);
                 comattk();
@@ -287,7 +261,7 @@ void attks()
 //************Computer Attack******************
 void comattk()
 {
-    const int MIN_VALUE = 0, MAX_VALUE = 3;//Sets constant min value and max to give student workable problems
+    const int MIN_VALUE = 0, MAX_VALUE = 4;//Sets constant min value and max to give student workable problems
     int cmattk;
     
     //seed time need for random values within max and min values
@@ -341,8 +315,66 @@ void comattk()
     }
 }
 
-//test
-void filePhp()
+void hitsuc()
+{
+    //Random number generator
+    unsigned short acc;  //attack success is 55+ max value assigned has been 100
+        
+    //random seed
+    srand(static_cast<unsigned int>(time(0)));
+    
+    //get value of accuracy if number is greater than 55 than hit is a success..
+    acc = accnum (acc);
+    cout << acc << endl;
+    //accuracy
+    bool damage;
+    if (acc <= 45 )
+    {
+        cout << "Miss" << endl;
+        damage = false;
+        cout << damage << endl;
+    }
+    else if (acc >= 55 )
+    {
+        cout << "Hit" << endl;
+        damage = true;
+        cout << damage << endl;
+    }
+}
+
+void elattk()
+{
+    //Random number generator
+    unsigned short acc;  //attack success is 55+ max value assigned has been 100
+        
+    //random seed
+    srand(static_cast<unsigned int>(time(0)));
+    
+    //get value of accuracy if number is greater than 55 than hit is a success..
+    acc = accnum (acc);
+    cout << acc << endl;
+    //accuracy
+    bool damage;
+    if (acc <= 40 )
+    {
+        damage = false;
+        if(damage == false)
+        {
+            cout << "Miss" << endl;
+        }
+    }
+    else if (acc >= 41 )
+    {
+        damage = true;
+        if(damage == true)
+        {
+            cout << "Hit" << endl;
+            pHpChk();
+        }
+    }
+}
+//change to pc's hp
+void pHpChk()
 {
     //Declare variables
     int curPhp;
@@ -354,14 +386,61 @@ void filePhp()
     inhp.open("plyrHp.dat");
     inhp >> curPhp;
     inhp.close();
-    cout << "Current HP: " << curPhp << endl;
-    cout << curPhp << ">";
+    cout << "Current HP: " << curPhp << setw(10) << " PC HP: "<< endl;
     curPhp = curPhp - 12;
-    cout <<curPhp<<endl;
+    cout << "Current HP: " << curPhp << setw(10) << " PC HP: "<< endl;
     outhp.open("plyrHp.dat");
     outhp << curPhp;
+    if(curPhp <=0 )
+    {
+        cout<<  "You have lost please wait while program auto terminates\n"
+"▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+"┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+"┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+"┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+"┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+"┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+"┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+"┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+"┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+"┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+"┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+"┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+"┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+        cout << "Bye-Bye Loser!!!" << endl;
+        exit(0);
+    }
     outhp.close();
 }
+////test
+//void filePhp()
+//{
+//    //Declare variables
+//    int curPhp;
+//    
+//    ofstream outhp;//Output / out used can be anything but its used for file
+//    ifstream inhp;//Input /used for reading files
+//    
+//    //read info from a file
+//    inhp.open("plyrHp.dat");
+//    inhp >> curPhp;
+//    inhp.close();
+//    cout << "Current HP: " << curPhp << endl;
+//    cout << curPhp << ">";
+//    curPhp = curPhp - 12;
+//    cout <<curPhp<<endl;
+//    outhp.open("plyrHp.dat");
+//    outhp << curPhp;
+//    outhp.close();
+//}
+
+
+//if(curPhp<=0)
+//{
+//    cout << "LOST" << endl;
+//    exit(0);//terminates program...
+//}
 
 /* 
  * ***Check List***
