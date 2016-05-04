@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Project1[Pokemanzz]
+PROJECTNAME=Craps_V2_Arrays
 
 # Active Configuration
 DEFAULTCONF=Debug

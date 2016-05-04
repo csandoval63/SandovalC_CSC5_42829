@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Project1[Pokemanzz]
+PROJECTNAME=Random_Dice_With_Arrays
 
 # Active Configuration
 DEFAULTCONF=Debug

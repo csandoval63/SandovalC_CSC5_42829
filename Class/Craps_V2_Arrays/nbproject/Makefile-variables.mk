@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Debug=project1_pokemanzz_
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/project1_pokemanzz_
+CND_ARTIFACT_NAME_Debug=craps_v2_arrays
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/craps_v2_arrays
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Debug=project1[pokemanzz].tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/project1[pokemanzz].tar
+CND_PACKAGE_NAME_Debug=crapsv2arrays.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/crapsv2arrays.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=project1_pokemanzz_
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/project1_pokemanzz_
+CND_ARTIFACT_NAME_Release=craps_v2_arrays
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/craps_v2_arrays
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=project1[pokemanzz].tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/project1[pokemanzz].tar
+CND_PACKAGE_NAME_Release=crapsv2arrays.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/crapsv2arrays.tar
 #
 # include compiler specific variables
 #

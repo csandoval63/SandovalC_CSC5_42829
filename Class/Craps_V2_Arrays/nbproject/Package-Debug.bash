@@ -13,9 +13,9 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1_pokemanzz_
-OUTPUT_BASENAME=project1_pokemanzz_
-PACKAGE_TOP_DIR=project1[pokemanzz]/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/craps_v2_arrays
+OUTPUT_BASENAME=craps_v2_arrays
+PACKAGE_TOP_DIR=crapsv2arrays/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/project1[pokemanzz]/bin"
+makeDirectory "${NBTMPDIR}/crapsv2arrays/bin"
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/project1\[pokemanzz\].tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/crapsv2arrays.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/project1\[pokemanzz\].tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/crapsv2arrays.tar *
 checkReturnCode
 
 # Cleanup
