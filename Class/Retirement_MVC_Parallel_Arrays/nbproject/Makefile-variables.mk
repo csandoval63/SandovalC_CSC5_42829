@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Debug=project_2__pokemanz_
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/project_2__pokemanz_
+CND_ARTIFACT_NAME_Debug=retirement_mvc_parallel_arrays
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/retirement_mvc_parallel_arrays
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Debug=project2[pokemanz].tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/project2[pokemanz].tar
+CND_PACKAGE_NAME_Debug=retirementmvcparallelarrays.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/retirementmvcparallelarrays.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=project_2__pokemanz_
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/project_2__pokemanz_
+CND_ARTIFACT_NAME_Release=retirement_mvc_parallel_arrays
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/retirement_mvc_parallel_arrays
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=project2[pokemanz].tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/project2[pokemanz].tar
+CND_PACKAGE_NAME_Release=retirementmvcparallelarrays.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/retirementmvcparallelarrays.tar
 #
 # include compiler specific variables
 #

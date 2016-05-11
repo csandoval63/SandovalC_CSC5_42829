@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Project 2 [Pokemanz]
+PROJECTNAME=Retirement_MVC_Parallel_Arrays
 
 # Active Configuration
 DEFAULTCONF=Debug
