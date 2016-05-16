@@ -1,0 +1,4 @@
+set up
+
+menu with all problems
+problems seperately
