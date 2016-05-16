@@ -11,7 +11,6 @@
 #include <cstdlib> //Rand and Set Random
 #include <ctime>   //Utilize time to set the seed
 #include <fstream> //Writing to a file
-#include <cmath>//math
 #include <iomanip> //Formatting output
 #include <unistd.h>//used to pause time so that random seed generator can differ between pc and player
 
@@ -49,9 +48,6 @@ void citeAtt();//punch attakc
 void citeDPc();//Punch damage/health calculator/watcher
 void cickAtt();//punch attakc
 void cickDPc();//Punch damage/health calculator/watcher
-//end/win/lose
-void win();
-void lose();
 
 
 //Execution Begins Here!
@@ -74,15 +70,12 @@ void menutxt()
             "Press 1 for Fire type Pokemon .\n"
             "Press 2 for Water type Pokemon.\n"
             "Press 3 for Grass type Pokemon.\n"
-            "Press 4 for Eletric type Pokemon ." << endl;
+            "Press 4 for Rock type Pokemon ." << endl;
 }
 
 void dragchoi()
 {
     int draCho;
-    
-    ofstream outtype;//Output / out used can be anything but its used for file
-    
     do
     {
     cin >> draCho;
@@ -94,10 +87,6 @@ void dragchoi()
                 cout<<"Thank you for choosing a Fire type" <<endl;
                 //computer picks randomly
                 comDrag();
-                //Saves type chosen for weakness's
-                outtype.open("plyrPokeType.dat");
-                outtype << draCho;
-                outtype.close();
                 attks();
                 cout<<endl;
                 break;
@@ -108,10 +97,6 @@ void dragchoi()
                 cout<<"Thank you for choosing a Water type" <<endl;
                 //computer picks randomly
                 comDrag();
-                //Saves type chosen for weakness's
-                outtype.open("plyrPokeType.dat");
-                outtype << draCho;
-                outtype.close();
                 attks();
                 cout<<endl;
                 break;
@@ -122,10 +107,6 @@ void dragchoi()
                 cout<<"Thank you for choosing a Grass type" <<endl;
                 //computer picks randomly
                 comDrag();
-                //Saves type chosen for weakness's
-                outtype.open("plyrPokeType.dat");
-                outtype << draCho;
-                outtype.close();
                 attks();
                 cout<<endl;
                 break;
@@ -133,13 +114,9 @@ void dragchoi()
             case 4:
             {
                 cout<<endl;
-                cout<<"Thank you for choosing a Electric type" <<endl;
+                cout<<"Thank you for choosing a Rock type" <<endl;
                 //computer picks randomly
                 comDrag();
-                //Saves type chosen for weakness's
-                outtype.open("plyrPokeType.dat");
-                outtype << draCho;
-                outtype.close();
                 attks();
                 cout<<endl;
                 break;
@@ -159,8 +136,6 @@ void comDrag()
     const int MIN_VALUE = 0, MAX_VALUE = 4;//Sets constant min value and max to give student workable problems
     int cmDrag;
     
-    ofstream outtype;//Output / out used can be anything but its used for file
-    
     //seed time need for random values within max and min values
     unsigned seed = time(0);
     srand(seed);
@@ -171,10 +146,6 @@ void comDrag()
         {
             cout<<endl;
             cout<<"Computer chose a Fire type" <<endl;
-            //Saves type chosen for weakness's
-            outtype.open("pcPokeType.dat");
-            outtype << cmDrag;
-            outtype.close();
             cout<<endl;
             break;
         }
@@ -182,10 +153,6 @@ void comDrag()
         {
             cout<<endl;
             cout<<"Computer chose a Water type" <<endl;
-            //Saves type chosen for weakness's
-            outtype.open("pcPokeType.dat");
-            outtype << cmDrag;
-            outtype.close();
             cout<<endl;
             break;
         }
@@ -193,21 +160,13 @@ void comDrag()
         {
             cout<<endl;
             cout<<"Computer chose a Grass type" <<endl;
-            //Saves type chosen for weakness's
-            outtype.open("pcPokeType.dat");
-            outtype << cmDrag;
-            outtype.close();
             cout<<endl;
             break;
         }
         case 4:
         {
             cout<<endl;
-            cout<<"Computer chose a Eletric type" <<endl;
-            //Saves type chosen for weakness's
-            outtype.open("pcPokeType.dat");
-            outtype << cmDrag;
-            outtype.close();
+            cout<<"Computer chose a Rock type" <<endl;
             cout<<endl;
             break;
         }
@@ -229,9 +188,8 @@ void attks()
 {
     int attk;
     
-    
     cout << "--------Attack Menu--------\n"
-            "Press 1 for Special Type Attack.(Damage: 18)\n"
+            "Press 1 for Elemental Attack.(Damage: 18)\n"
             "Press 2 for Punch.(Damage: 13)\n"
             "Press 3 for Bite.(Damage: 10)\n"
             "Press 4 for Kick.(Damage: 8)" << endl;
@@ -327,11 +285,13 @@ void pelattk()// special attack
 //damage calculator and health updater
 void eletoPc()
 {
-    ofstream outPhp, outChp;//Output / out used can be anything but its used for file
-    ifstream inPhp, inChp, inType;//Input /used for reading files
-    
     //Declare variables
-    int curChp, curPhp, draCho, comDrag;
+    int curChp, curPhp;
+    
+    ofstream outChp;//Output / out used can be anything but its used for file
+    ifstream inChp;//Input /used for reading files
+    ofstream outPhp;//Output / out used can be anything but its used for file
+    ifstream inPhp;//Input /used for reading files
     
     //read info from a file
     inChp.open("compHp.dat");
@@ -340,62 +300,44 @@ void eletoPc()
     inPhp.open("plyrHp.dat");
     inPhp >> curPhp;
     inPhp.close();
-    inType.open("plyrPokeType.dat");
-    inType >> draCho;
-    inType.close();
-    inType.open("pcPokeType.dat");
-    inType >> comDrag;
-    inType.close();
-    if(draCho == 1 && comDrag == 3)
-    {
-        cout << "Computer's pokemon is weak against fire move" << endl;
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curChp = (curChp - 18) + pow(2, 2);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outChp.open("compHp.dat");
-        outChp << curChp;
-        outChp.close();
-    }
-    else if(draCho == 2 && comDrag == 1)
-    {
-        cout << "Computer's pokemon is weak against water move" << endl;
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curChp = (curChp - 18) + pow(2, 2);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outChp.open("compHp.dat");
-        outChp << curChp;
-        outChp.close();
-    }
-    else if(draCho == 4 && comDrag == 2)
-    {
-        cout << "Computer's pokemon is weak against eletric move" << endl;
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curChp = (curChp - 18) + pow(2, 2);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outChp.open("compHp.dat");
-        outChp << curChp;
-        outChp.close();
-    }
-    else
-    {
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curChp = (curChp - 18);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outChp.open("compHp.dat");
-        outChp << curChp;
-        outChp.close();
-    }
+    cout << "---HP: BEFORE ATTACK---" << endl;
+    cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
+    curChp = curChp - 18;
+    cout << "---HP: AFTER ATTACK---" << endl;
+    cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
+    outChp.open("compHp.dat");
+    outChp << curChp;
+    outChp.close();
     if(curChp <=0 )
     {
-        win();
+        cout<<  "You have WON!!!!! \nPlease wait for program to auto terminate.\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+
+        //resets HP in .dat files to be at max hp 150 again...
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        //closes hp files
+        outPhp.close();
+        outChp.close();
+        cout << "Bye-Bye Winner Winner Chicken Dinner!!!" << endl;
+        exit(0);//terminates program
     }
 }//end special attack by user
 
@@ -408,7 +350,8 @@ void pnchatt()//punch attack by player
     srand(static_cast<unsigned int>(time(0)));
     
     //get value of accuracy if number is greater than 55 than hit is a success..
-    //cout << acc << endl; displays random number generated...
+    acc = accnum (acc);
+    cout << acc << endl;
     //accuracy
     bool damage;
     if (acc <= 55 )
@@ -456,7 +399,32 @@ void pnDtoPC()
     outChp.close();
     if(curChp <=0 )
     {
-        win();
+        cout<<  "You have WON!!!!! \nPlease wait for program to auto terminate.\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        outPhp.close();
+        outChp.close();
+        cout << "Bye-Bye Winner Winner Chicken Dinner!!!" << endl;
+        exit(0);
     }
 }// end punch attack by user
 
@@ -470,7 +438,7 @@ void biteAtt()//Bite attack by player
     
     //get value of accuracy if number is greater than 55 than hit is a success..
     acc = accnum (acc);
-    //cout << acc << endl; displays random number generated...
+    cout << acc << endl;
     //accuracy
     bool damage;
     if (acc <= 45 )
@@ -518,7 +486,32 @@ void biteDPc()
     outChp.close();
     if(curChp <=0 )
     {
-        win();
+        cout<<  "You have WON!!!!! \nPlease wait for program to auto terminate.\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        outPhp.close();
+        outChp.close();
+        cout << "Bye-Bye Winner Winner Chicken Dinner!!!" << endl;
+        exit(0);
     }
 }//end bite attack
 
@@ -532,7 +525,7 @@ void kickAtt()//Kick attack by player
     
     //get value of accuracy if number is greater than 55 than hit is a success..
     acc = accnum (acc);
-    //cout << acc << endl; displays random number generated...
+    cout << acc << endl;
     //accuracy
     bool damage;
     if (acc <= 35 )
@@ -580,7 +573,32 @@ void kickDPc()
     outChp.close();
     if(curChp <=0 )
     {
-        win();
+        cout<<  "You have WON!!!!! \nPlease wait for program to auto terminate.\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        outPhp.close();
+        outChp.close();
+        cout << "Bye-Bye Winner Winner Chicken Dinner!!!" << endl;
+        exit(0);
     }
 }//end kick attack
 
@@ -678,11 +696,13 @@ void celattk()// special attack
 
 void eletopy()
 {
-    ofstream outPhp, outChp;//Output / out used can be anything but its used for file
-    ifstream inPhp, inChp, inType;//Input /used for reading files
-    
     //Declare variables
-    int curChp, curPhp, draCho, comDrag;
+    int curChp, curPhp;
+    
+    ofstream outChp;//Output / out used can be anything but its used for file
+    ifstream inChp;//Input /used for reading files
+    ofstream outPhp;//Output / out used can be anything but its used for file
+    ifstream inPhp;//Input /used for reading files
     
     //read info from a file
     inChp.open("compHp.dat");
@@ -691,62 +711,42 @@ void eletopy()
     inPhp.open("plyrHp.dat");
     inPhp >> curPhp;
     inPhp.close();
-    inType.open("plyrPokeType.dat");
-    inType >> draCho;
-    inType.close();
-    inType.open("pcPokeType.dat");
-    inType >> comDrag;
-    inType.close();
-    if(draCho == 1 && comDrag == 3)
-    {
-        cout << "Your pokemon is weak against fire move" << endl;
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curPhp = (curPhp - 18) + pow(2, 2);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outPhp.open("plyrHp.dat");
-        outPhp << curPhp;
-        outPhp.close();
-    }
-    else if(draCho == 2 && comDrag == 1)
-    {
-        cout << "Your pokemon is weak against water move" << endl;
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curPhp = (curPhp - 18) + pow(2, 2);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outPhp.open("plyrHp.dat");
-        outPhp << curPhp;
-        outPhp.close();
-    }
-    else if(draCho == 4 && comDrag == 2)
-    {
-        cout << "Your pokemon is weak against eletric move" << endl;
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curPhp = (curPhp - 18) + pow(2, 2);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outPhp.open("plyrHp.dat");
-        outPhp << curPhp;
-        outPhp.close();
-    }
-    else
-    {
-        cout << "---HP: BEFORE ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        curPhp = (curPhp - 18);
-        cout << "---HP: AFTER ATTACK---" << endl;
-        cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
-        outPhp.open("plyrHp.dat");
-        outPhp << curPhp;
-        outPhp.close();
-    }
+    cout << "---HP: BEFORE ATTACK---" << endl;
+    cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
+    curPhp = curPhp - 18;
+    cout << "---HP: AFTER ATTACK---" << endl;
+    cout << "Computer HP: " << curChp << setw(10) << " Your HP: " << curPhp << "\n"<< endl;
+    outPhp.open("plyrHp.dat");
+    outPhp << curPhp;
+    outPhp.close();
     if(curPhp <=0 )
     {
-        lose();
+        cout<<  "You have lost please wait while program auto terminates\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        outPhp.close();
+        outChp.close();
+        cout << "Bye-Bye Loser!!!" << endl;
+        exit(0);
     }
 }//end special attack by user
 
@@ -808,7 +808,32 @@ void cnDtoPC()
     outPhp.close();
     if(curPhp <=0 )
     {
-        lose();
+        cout<<  "You have lost please wait while program auto terminates\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        outPhp.close();
+        outChp.close();
+        cout << "Bye-Bye Loser!!!" << endl;
+        exit(0);
     }
 }// end punch attack by user
 
@@ -870,7 +895,32 @@ void citeDPc()
     outPhp.close();
     if(curPhp <=0 )
     {
-        lose();
+        cout<<  "You have lost please wait while program auto terminates\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        sleep(3);
+
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        outPhp.close();
+        outChp.close();
+        cout << "Bye-Bye Loser!!!" << endl;
+        exit(0);
     }
 }//end bite attack
 
@@ -932,34 +982,20 @@ void cickDPc()
     outPhp.close();
     if(curPhp <=0 )
     {
-        lose();
-    }
-}//end kick attack
-
-void win()
-{
-    
-    //declare health variables
-    int curChp, curPhp;
-    
-    //outputs for reseting health
-    ofstream outChp;//Output / out used can be anything but its used for file
-    ofstream outPhp;//Output / out used can be anything but its used for file
-    
-    cout<<  "You have WON!!!!! \nPlease wait for program to auto terminate.\n"
-            "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
-            "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
-            "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
-            "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
-            "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
-            "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
-            "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
-            "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
-            "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
-            "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
-            "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
-            "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
-            "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+        cout<<  "You have lost please wait while program auto terminates\n"
+                "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
+                "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
+                "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
+                "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
+                "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
+                "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
+                "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
+                "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
+                "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
+                "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
+                "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
+                "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
         sleep(3);
 
         outChp.open("compHp.dat");
@@ -970,46 +1006,11 @@ void win()
         outPhp << curPhp;
         outPhp.close();
         outChp.close();
-        cout << "Bye-Bye Winner Winner Chicken Dinner!!!" << endl;
+        cout << "Bye-Bye Loser!!!" << endl;
         exit(0);
-}
+    }
+}//end kick attack
 
-void lose()
-{
-    //declare health variables
-    int curChp, curPhp;
-    
-    //outputs for reseting health
-    ofstream outChp;//Output / out used can be anything but its used for file
-    ofstream outPhp;//Output / out used can be anything but its used for file
-    
-    cout<<  "You have lost please wait while program auto terminates\n"
-    "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
-    "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
-    "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
-    "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
-    "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
-    "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
-    "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
-    "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
-    "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
-    "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
-    "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
-    "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
-    "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
-    sleep(3);
-
-    outChp.open("compHp.dat");
-    curChp = 150;
-    outChp << curChp;    
-    outPhp.open("plyrHp.dat");
-    curPhp = 150;
-    outPhp << curPhp;
-    outPhp.close();
-    outChp.close();
-    cout << "Bye-Bye Loser!!!" << endl;
-    exit(0);
-}
 /* 
  * ***To-do List***
  * Weakness system?
