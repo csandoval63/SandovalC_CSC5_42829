@@ -1,0 +1,11 @@
+- Example IO- << Pictures of the code running/ screenshots
+
+- Checklist of concepts and where in line of code is located took picture on phone
+
+- Complete Flowchart
+
+- Pseudo Code <<<< You can copy the code and delete the lines of code and just leave the comments behind
+
+- Have a better explanation, dont assume he knows how to run code.
+
+- 
