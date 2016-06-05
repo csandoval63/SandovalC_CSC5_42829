@@ -52,12 +52,29 @@ void cickDPc();//Punch damage/health calculator/watcher
 //end/win/lose
 void win();
 void lose();
+void wMenu();
+void restart();
 
 
 //Execution Begins Here!
 int main(int argc, char** argv) 
 {
     //Title
+    int curChp, curPhp;
+    
+    //outputs for reseting health
+    ofstream outChp;//Output / out used can be anything but its used for file
+    ofstream outPhp;//Output / out used can be anything but its used for file
+    
+        outChp.open("compHp.dat");
+        curChp = 150;
+        outChp << curChp;    
+        outPhp.open("plyrHp.dat");
+        curPhp = 150;
+        outPhp << curPhp;
+        outPhp.close();
+        outChp.close();
+        
     menutxt();
     
     //ask user for choice/bring up menu
@@ -947,19 +964,19 @@ void win()
     ofstream outPhp;//Output / out used can be anything but its used for file
     
     cout<<  "You have WON!!!!! \nPlease wait for program to auto terminate.\n"
-            "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
-            "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
-            "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
-            "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
-            "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
-            "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
-            "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
-            "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
-            "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
-            "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
-            "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
-            "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
-            "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+    "▕▔╲             ╱▔▏     \n"
+    "  ╲╱╲         ╱╲╱       \n"
+    "    ╲  ╲▂▂▂╱  ╱     ╱╲\n"
+    "   ╱            ╲    ╱┈┈╲\n"
+    "   ▏  ▆ ▂ ▆   ▕  ╱┈┈┈╱\n"
+    "  ▕╭╮ ┳┻┳  ╭╮▏╲┈┈╱\n"
+    "   ╲ ╯ ╰━╯ ╰ ╱ ╱┈┈╲\n"
+    "   ╱           ╲  ╲┈┈┈╲\n"
+    "  ▕╲  ▕    ▏ ╱▏  ╱ ┈ ╱\n"
+    "  ▕  ▔▔    ▔▔ ▏╱ ┈ ╱\n"
+    "  ▕            ▕▔ ┈╱\n"
+    "   ╲            ╱▔▔\n"
+    "    ▕▂╱▔▔▔╲▂▏\n" << endl;
         sleep(3);
 
         outChp.open("compHp.dat");
@@ -970,8 +987,8 @@ void win()
         outPhp << curPhp;
         outPhp.close();
         outChp.close();
-        cout << "Bye-Bye Winner Winner Chicken Dinner!!!" << endl;
-        exit(0);
+        cout << "You have won!!!" << endl;
+        wMenu();
 }
 
 void lose()
@@ -984,19 +1001,19 @@ void lose()
     ofstream outPhp;//Output / out used can be anything but its used for file
     
     cout<<  "You have lost please wait while program auto terminates\n"
-    "▕▔╲┊┊┊┊┊┊┊╱▔▏┊┊┊\n"
-    "┊╲╱╲┊┊┊┊┊╱╲╱┊┊┊┊\n"
-    "┊┊╲┈╲▂▂▂╱┈╱┊┊┊╱╲\n"
-    "┊┊╱┈┈┈┈┈┈┈╲┊┊╱┈┈╲\n"
-    "┊┊▏▕▆▍▂▕▆▍▕┊╱┈┈┈╱\n"
-    "┊▕╭╮┈┳┻┳┈╭╮▏╲┈┈╱\n"
-    "┊┊╲╯┈╰━╯┈╰╱┊╱┈┈╲\n"
-    "┊┊╱┈┈┈┈┈┈┈╲┊╲┈┈┈╲\n"
-    "┊▕╲┈▕┈┈┈▏┈╱▏┊╱┈╱\n"
-    "┊▕┈▔▔┈┈┈▔▔┈▏╱┈╱┊\n"
-    "┊▕┈┈┈┈┈┈┈┈▕▔┈╱┊┊\n"
-    "┈┈╲┈┈┈┈┈┈┈╱▔▔┈┈┈\n"
-    "┈┈▕▂╱▔▔▔╲▂▏┈┈┈┈┈\n" << endl;
+    "▕▔╲             ╱▔▏     \n"
+    "  ╲╱╲         ╱╲╱       \n"
+    "    ╲  ╲▂▂▂╱  ╱     ╱╲\n"
+    "   ╱            ╲    ╱┈┈╲\n"
+    "   ▏  ▆ ▂ ▆   ▕  ╱┈┈┈╱\n"
+    "  ▕╭╮ ┳┻┳  ╭╮▏╲┈┈╱\n"
+    "   ╲ ╯ ╰━╯ ╰ ╱ ╱┈┈╲\n"
+    "   ╱           ╲  ╲┈┈┈╲\n"
+    "  ▕╲  ▕    ▏ ╱▏  ╱ ┈ ╱\n"
+    "  ▕  ▔▔    ▔▔ ▏╱ ┈ ╱\n"
+    "  ▕            ▕▔ ┈╱\n"
+    "   ╲            ╱▔▔\n"
+    "    ▕▂╱▔▔▔╲▂▏\n" << endl;
     sleep(3);
 
     outChp.open("compHp.dat");
@@ -1007,8 +1024,63 @@ void lose()
     outPhp << curPhp;
     outPhp.close();
     outChp.close();
-    cout << "Bye-Bye Loser!!!" << endl;
-    exit(0);
+    cout << "You have lost!!!" << endl;
+    wMenu();
+}
+
+void restart()
+{
+        //declare health variables
+    int curChp, curPhp;
+    
+    //outputs for reseting health
+    ofstream outChp;//Output / out used can be anything but its used for file
+    ofstream outPhp;//Output / out used can be anything but its used for file
+
+    sleep(3);
+
+    outChp.open("compHp.dat");
+    curChp = 150;
+    outChp << curChp;    
+    outPhp.open("plyrHp.dat");
+    curPhp = 150;
+    outPhp << curPhp;
+    outPhp.close();
+    outChp.close();
+    
+    menutxt();
+    dragchoi();
+}
+
+void wMenu()
+{
+    int gamecho;
+    cout << "\nWhat would you like to do?\n\n"
+            "Press 1 to restart the game\n"
+            "Press 2 to end the program" << endl;
+    do
+    {
+        cin >> gamecho;
+        switch(gamecho)
+        {
+            case 1:
+            {
+                cout << "Game is restarting please wait..." << endl;
+                restart();
+            }
+            case 2:
+            {
+                cout << "Good bye program now closing" << endl;
+                sleep(2);
+                exit(0);
+            }
+            default:
+            {
+                cout<<"Please input proper choice" <<endl;
+            }
+        }
+    }
+        while(gamecho < 2);
 }
 /* 
  * ***To-do List***
