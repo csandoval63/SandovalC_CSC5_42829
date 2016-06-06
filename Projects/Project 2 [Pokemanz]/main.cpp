@@ -14,6 +14,7 @@
 #include <cmath>//math
 #include <iomanip> //Formatting output
 #include <unistd.h>//used to pause time so that random seed generator can differ between pc and player
+#include <vector>
 
 using namespace std;
 
@@ -54,26 +55,33 @@ void win();
 void lose();
 void wMenu();
 void restart();
+//pass by reference,use value from another function
+void getRand(int &);
 
 
 //Execution Begins Here!
 int main(int argc, char** argv) 
 {
     //Title
+    cout << "      Welcome to the pokemon battle simulation game\n"
+            " Your objective is to choose a pokemon and beat the computer\n"
+            "The Game will end when either player's pokemon's hp goes below 0."
+            << endl << endl;
+            
     int curChp, curPhp;
     
     //outputs for reseting health
     ofstream outChp;//Output / out used can be anything but its used for file
     ofstream outPhp;//Output / out used can be anything but its used for file
     
-        outChp.open("compHp.dat");
-        curChp = 150;
-        outChp << curChp;    
-        outPhp.open("plyrHp.dat");
-        curPhp = 150;
-        outPhp << curPhp;
-        outPhp.close();
-        outChp.close();
+    outChp.open("compHp.dat");
+    curChp = 150;
+    outChp << curChp;    
+    outPhp.open("plyrHp.dat");
+    curPhp = 150;
+    outPhp << curPhp;
+    outPhp.close();
+    outChp.close();
         
     menutxt();
     
@@ -82,7 +90,7 @@ int main(int argc, char** argv)
 
     return 0;
 }
-
+//displaymenu text
 void menutxt()
 {
     //Title
@@ -93,10 +101,18 @@ void menutxt()
             "Press 3 for Grass type Pokemon.\n"
             "Press 4 for Eletric type Pokemon ." << endl;
 }
-
+//User choose pokemon type
 void dragchoi()
 {
-    int draCho;
+    
+    const int TYPES=5;
+    string pokemon[TYPES];
+    pokemon[0]="Fire";
+    pokemon[1]="Water";
+    pokemon[2]="Grass";
+    pokemon[3]="Eletric";
+    
+    int draCho, i(0);
     
     ofstream outtype;//Output / out used can be anything but its used for file
     
@@ -108,7 +124,7 @@ void dragchoi()
             case 1:
             {
                 cout<<endl;
-                cout<<"Thank you for choosing a Fire type" <<endl;
+                cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
                 comDrag();
                 //Saves type chosen for weakness's
@@ -122,7 +138,8 @@ void dragchoi()
             case 2:
             {
                 cout<<endl;
-                cout<<"Thank you for choosing a Water type" <<endl;
+                i++;
+                cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
                 comDrag();
                 //Saves type chosen for weakness's
@@ -136,7 +153,9 @@ void dragchoi()
             case 3:
             {
                 cout<<endl;
-                cout<<"Thank you for choosing a Grass type" <<endl;
+                i++;
+                i++;
+                cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
                 comDrag();
                 //Saves type chosen for weakness's
@@ -150,7 +169,10 @@ void dragchoi()
             case 4:
             {
                 cout<<endl;
-                cout<<"Thank you for choosing a Electric type" <<endl;
+                i++;
+                i++;
+                i++;
+                cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
                 comDrag();
                 //Saves type chosen for weakness's
@@ -163,25 +185,24 @@ void dragchoi()
             }
             default:
             {
-                cout<<"Please input proper choice" <<endl;
+                cout<<"Please input proper choice\n" <<endl;
+                menutxt();
+                dragchoi();
             }
         }
     }
         while(draCho < 5);
 }
 
-//Random Pokemon Selector
+//Random computer Pokemon Selector
 void comDrag()
 {
-    const int MIN_VALUE = 0, MAX_VALUE = 4;//Sets constant min value and max to give student workable problems
     int cmDrag;
     
     ofstream outtype;//Output / out used can be anything but its used for file
+
+    getRand(cmDrag);
     
-    //seed time need for random values within max and min values
-    unsigned seed = time(0);
-    srand(seed);
-    cmDrag = (rand() % (MAX_VALUE - MIN_VALUE + 1)) +MIN_VALUE;
     switch(cmDrag)
     {
         case 1:
@@ -228,7 +249,20 @@ void comDrag()
             cout<<endl;
             break;
         }
+        default:
+        {
+            comDrag();
+        }
     }
+}
+//random number generator
+void getRand(int &cmDrag)
+{
+    const int MIN_VALUE = 0, MAX_VALUE = 4;//Sets constant min value and max to give student workable problems
+    //seed time need for random values within max and min values
+    unsigned seed = time(0);
+    srand(seed);
+    cmDrag = (rand() % (MAX_VALUE - MIN_VALUE + 1)) +MIN_VALUE;
 }
 
 //Random number generator for accuracy
@@ -260,7 +294,7 @@ void attks()
             case 1:
             {
                 cout<<endl;
-                cout<<"Your Pokemon Used it type attack" <<endl;
+                cout<<"Your Pokemon Used special type attack" <<endl;
                 pelattk();
                 cout<<"Please wait\nComputer is deciding on attack" <<endl;
                 sleep(1);
@@ -605,60 +639,58 @@ void kickDPc()
 void comattk()
 {
     const int MIN_VALUE = 0, MAX_VALUE = 4;//Sets constant min value and max to give student workable problems
-    int cmattk;
     
     //seed time need for random values within max and min values
     unsigned seed = time(0);
     srand(seed);
-
-    do
+    
+    for(int cmattk; cmattk < 4;)
     {
-    cmattk = (rand() % (MAX_VALUE - MIN_VALUE + 1)) +MIN_VALUE;
-    switch(cmattk)
-    {
-        case 1:
+        cmattk = (rand() % (MAX_VALUE - MIN_VALUE + 1)) +MIN_VALUE;
+        switch(cmattk)
         {
-            cout<<endl;
-            cout<<"Computer chose Special type attack" <<endl;
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            celattk();
-            attks();
-            cout<<endl;
-            break;
-        }
-        case 2:
-        {
-            cout<<endl;
-            cout<<"Computer chose Punch attack" <<endl;
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            cnchatt();
-            attks();
-            cout<<endl;
-            break;
-        }
-        case 3:
-        {
-            cout<<endl;
-            cout<<"Computer chose Bite attack" <<endl;
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            citeAtt();
-            attks();
-            cout<<endl;
-            break;
-        }
-        case 4:
-        {
-            cout<<endl;
-            cout<<"Computer chose Kick attack" <<endl;
-            //test hit success rate for attack patterns later add 2 or more attacks for fun
-            cickAtt();
-            attks();
-            cout<<endl;
-            break;
+            case 1:
+            {
+                cout<<endl;
+                cout<<"Computer chose Special type attack" <<endl;
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                celattk();
+                attks();
+                cout<<endl;
+                break;
+            }
+            case 2:
+            {
+                cout<<endl;
+                cout<<"Computer chose Punch attack" <<endl;
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                cnchatt();
+                attks();
+                cout<<endl;
+                break;
+            }
+            case 3:
+            {
+                cout<<endl;
+                cout<<"Computer chose Bite attack" <<endl;
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                citeAtt();
+                attks();
+                cout<<endl;
+                break;
+            }
+            case 4:
+            {
+                cout<<endl;
+                cout<<"Computer chose Kick attack" <<endl;
+                //test hit success rate for attack patterns later add 2 or more attacks for fun
+                cickAtt();
+                attks();
+                cout<<endl;
+                break;
+            }
         }
     }
-    }
-    while(cmattk < 5);
 }
 
 void celattk()// special attack
@@ -963,7 +995,7 @@ void win()
     ofstream outChp;//Output / out used can be anything but its used for file
     ofstream outPhp;//Output / out used can be anything but its used for file
     
-    cout<<  "You have WON!!!!! \nPlease wait for program to auto terminate.\n"
+    cout<<  "\n"
     "▕▔╲             ╱▔▏     \n"
     "  ╲╱╲         ╱╲╱       \n"
     "    ╲  ╲▂▂▂╱  ╱     ╱╲\n"
@@ -976,7 +1008,7 @@ void win()
     "  ▕  ▔▔    ▔▔ ▏╱ ┈ ╱\n"
     "  ▕            ▕▔ ┈╱\n"
     "   ╲            ╱▔▔\n"
-    "    ▕▂╱▔▔▔╲▂▏\n" << endl;
+    "    ▕▂╱▔▔▔╲▂▏\nYou have Won!!!!!\n" << endl;
         sleep(3);
 
         outChp.open("compHp.dat");
@@ -987,7 +1019,6 @@ void win()
         outPhp << curPhp;
         outPhp.close();
         outChp.close();
-        cout << "You have won!!!" << endl;
         wMenu();
 }
 
@@ -1000,7 +1031,7 @@ void lose()
     ofstream outChp;//Output / out used can be anything but its used for file
     ofstream outPhp;//Output / out used can be anything but its used for file
     
-    cout<<  "You have lost please wait while program auto terminates\n"
+    cout<<  "\n"
     "▕▔╲             ╱▔▏     \n"
     "  ╲╱╲         ╱╲╱       \n"
     "    ╲  ╲▂▂▂╱  ╱     ╱╲\n"
@@ -1013,7 +1044,7 @@ void lose()
     "  ▕  ▔▔    ▔▔ ▏╱ ┈ ╱\n"
     "  ▕            ▕▔ ┈╱\n"
     "   ╲            ╱▔▔\n"
-    "    ▕▂╱▔▔▔╲▂▏\n" << endl;
+    "    ▕▂╱▔▔▔╲▂▏\nYou have lost!!!\n" << endl;
     sleep(3);
 
     outChp.open("compHp.dat");
@@ -1024,7 +1055,6 @@ void lose()
     outPhp << curPhp;
     outPhp.close();
     outChp.close();
-    cout << "You have lost!!!" << endl;
     wMenu();
 }
 
