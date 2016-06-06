@@ -104,13 +104,13 @@ void menutxt()
 //User choose pokemon type
 void dragchoi()
 {
-    
-    const int TYPES=5;
+    //string and gc for getting pokemon types in arrays
+    const int TYPES= 15;//Original first gen
     string pokemon[TYPES];
     pokemon[0]="Fire";
     pokemon[1]="Water";
     pokemon[2]="Grass";
-    pokemon[3]="Eletric";
+    pokemon[3]="Electric";
     
     int draCho, i(0);
     
@@ -201,6 +201,7 @@ void comDrag()
     
     ofstream outtype;//Output / out used can be anything but its used for file
 
+    //get random number input for computers pol
     getRand(cmDrag);
     
     switch(cmDrag)
@@ -1088,7 +1089,8 @@ void wMenu()
     cout << "\nWhat would you like to do?\n\n"
             "Press 1 to restart the game\n"
             "Press 2 to end the program" << endl;
-    do
+    
+    while(gamecho < 2)
     {
         cin >> gamecho;
         switch(gamecho)
@@ -1110,7 +1112,6 @@ void wMenu()
             }
         }
     }
-        while(gamecho < 2);
 }
 /* 
  * ***To-do List***
