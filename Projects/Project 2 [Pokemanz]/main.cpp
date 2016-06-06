@@ -3,7 +3,8 @@
  * Author: Christian Sandoval
  * Created on April 30, 2016, 10:05 PM
  * Purpose:  Pokemon Battle
- * To-do at bottom...
+ * To-do at bottom...//note to self
+ * About 500+ lines of valid code
  */
 
 //System Libraries
@@ -14,7 +15,6 @@
 #include <cmath>//math
 #include <iomanip> //Formatting output
 #include <unistd.h>//used to pause time so that random seed generator can differ between pc and player
-#include <vector>
 
 using namespace std;
 
@@ -57,7 +57,6 @@ void wMenu();
 void restart();
 //pass by reference,use value from another function
 void getRand(int &);
-
 
 //Execution Begins Here!
 int main(int argc, char** argv) 
