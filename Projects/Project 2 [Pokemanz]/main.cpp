@@ -24,9 +24,9 @@ using namespace std;
 
 //Function Prototypes
 unsigned short accnum(unsigned short);
-void dragchoi();
+void dragchoi(string [], int , int);//<<<< 1-d array
 void menutxt();
-void comDrag();
+void comDrag(int);//default parameter
 void accnum();
 void hitsuc();
 //Attacks Menus
@@ -67,6 +67,11 @@ int main(int argc, char** argv)
             "The Game will end when either player's pokemon's hp goes below 0."
             << endl << endl;
             
+    //declare variables
+    const int TYPES= 15;//Original first gen
+    string pokemon[TYPES];
+    int draCho;
+    int i = 0;
     int curChp, curPhp;
     
     //outputs for reseting health
@@ -82,10 +87,11 @@ int main(int argc, char** argv)
     outPhp.close();
     outChp.close();
         
+    //show menu text
     menutxt();
     
     //ask user for choice/bring up menu
-    dragchoi();
+    dragchoi(pokemon, draCho, i);
 
     return 0;
 }
@@ -101,17 +107,15 @@ void menutxt()
             "Press 4 for Eletric type Pokemon ." << endl;
 }
 //User choose pokemon type
-void dragchoi()
+void dragchoi(string pokemon[], int draCho, int i)
 {
     //string and gc for getting pokemon types in arrays
-    const int TYPES= 15;//Original first gen
-    string pokemon[TYPES];
     pokemon[0]="Fire";
     pokemon[1]="Water";
     pokemon[2]="Grass";
     pokemon[3]="Electric";
     
-    int draCho, i(0);
+    int cmDrag;
     
     ofstream outtype;//Output / out used can be anything but its used for file
     
@@ -125,7 +129,7 @@ void dragchoi()
                 cout<<endl;
                 cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
-                comDrag();
+                comDrag(cmDrag);
                 //Saves type chosen for weakness's
                 outtype.open("plyrPokeType.dat");
                 outtype << draCho;
@@ -140,7 +144,7 @@ void dragchoi()
                 i++;
                 cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
-                comDrag();
+                comDrag(cmDrag);
                 //Saves type chosen for weakness's
                 outtype.open("plyrPokeType.dat");
                 outtype << draCho;
@@ -156,7 +160,7 @@ void dragchoi()
                 i++;
                 cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
-                comDrag();
+                comDrag(cmDrag);
                 //Saves type chosen for weakness's
                 outtype.open("plyrPokeType.dat");
                 outtype << draCho;
@@ -173,7 +177,7 @@ void dragchoi()
                 i++;
                 cout<<"Thank you for choosing a " << pokemon[i] << " type." <<endl;
                 //computer picks randomly
-                comDrag();
+                comDrag(cmDrag);
                 //Saves type chosen for weakness's
                 outtype.open("plyrPokeType.dat");
                 outtype << draCho;
@@ -186,7 +190,7 @@ void dragchoi()
             {
                 cout<<"Please input proper choice\n" <<endl;
                 menutxt();
-                dragchoi();
+                dragchoi(pokemon, draCho, i);
             }
         }
     }
@@ -194,10 +198,9 @@ void dragchoi()
 }
 
 //Random computer Pokemon Selector
-void comDrag()
+void comDrag(int cmDrag)
 {
-    int cmDrag;
-    
+    //output type for to file
     ofstream outtype;//Output / out used can be anything but its used for file
 
     //get random number input for computers pol
@@ -251,7 +254,7 @@ void comDrag()
         }
         default:
         {
-            comDrag();
+            comDrag(cmDrag);
         }
     }
 }
@@ -567,6 +570,7 @@ void biteDPc()
     outChp.open("compHp.dat");
     outChp << curChp;
     outChp.close();
+    //if hp is less than zero show player win
     if(curChp <=0 )
     {
         win();
@@ -1060,6 +1064,11 @@ void lose()
 
 void restart()
 {
+    //Pokemon type array variables
+    const int TYPES= 15;//Original first gen
+    string pokemon[TYPES];
+    int draCho;
+    int i = 0;
         //declare health variables
     int curChp, curPhp;
     
@@ -1079,7 +1088,7 @@ void restart()
     outChp.close();
     
     menutxt();
-    dragchoi();
+    dragchoi(pokemon, draCho, i);
 }
 
 void wMenu()
