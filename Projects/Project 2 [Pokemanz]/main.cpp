@@ -55,12 +55,14 @@ void win();
 void lose();
 void wMenu();
 void restart();
+void restHealth();//used to reset health in case program is quit early
 //pass by reference,use value from another function
 void getRand(int &);
 
 //Execution Begins Here!
 int main(int argc, char** argv) 
 {
+    restHealth();
     //Title
     cout << "      Welcome to the pokemon battle simulation game\n"
             " Your objective is to choose a pokemon and beat the computer\n"
@@ -72,20 +74,6 @@ int main(int argc, char** argv)
     string pokemon[TYPES];
     int draCho;
     int i = 0;
-    int curChp, curPhp;
-    
-    //outputs for reseting health
-    ofstream outChp;//Output / out used can be anything but its used for file
-    ofstream outPhp;//Output / out used can be anything but its used for file
-    
-    outChp.open("compHp.dat");
-    curChp = 150;
-    outChp << curChp;    
-    outPhp.open("plyrHp.dat");
-    curPhp = 150;
-    outPhp << curPhp;
-    outPhp.close();
-    outChp.close();
         
     //show menu text
     menutxt();
@@ -991,14 +979,6 @@ void cickDPc()
 
 void win()
 {
-    
-    //declare health variables
-    int curChp, curPhp;
-    
-    //outputs for reseting health
-    ofstream outChp;//Output / out used can be anything but its used for file
-    ofstream outPhp;//Output / out used can be anything but its used for file
-    
     cout<<  "\n"
     "▕▔╲             ╱▔▏     \n"
     "  ╲╱╲         ╱╲╱       \n"
@@ -1014,27 +994,13 @@ void win()
     "   ╲            ╱▔▔\n"
     "    ▕▂╱▔▔▔╲▂▏\nYou have Won!!!!!\n" << endl;
         sleep(3);
-
-        outChp.open("compHp.dat");
-        curChp = 150;
-        outChp << curChp;    
-        outPhp.open("plyrHp.dat");
-        curPhp = 150;
-        outPhp << curPhp;
-        outPhp.close();
-        outChp.close();
+        
+        restHealth();
         wMenu();
 }
 
 void lose()
 {
-    //declare health variables
-    int curChp, curPhp;
-    
-    //outputs for reseting health
-    ofstream outChp;//Output / out used can be anything but its used for file
-    ofstream outPhp;//Output / out used can be anything but its used for file
-    
     cout<<  "\n"
     "▕▔╲             ╱▔▏     \n"
     "  ╲╱╲         ╱╲╱       \n"
@@ -1051,14 +1017,7 @@ void lose()
     "    ▕▂╱▔▔▔╲▂▏\nYou have lost!!!\n" << endl;
     sleep(3);
 
-    outChp.open("compHp.dat");
-    curChp = 150;
-    outChp << curChp;    
-    outPhp.open("plyrHp.dat");
-    curPhp = 150;
-    outPhp << curPhp;
-    outPhp.close();
-    outChp.close();
+    restHealth();
     wMenu();
 }
 
@@ -1069,24 +1028,10 @@ void restart()
     string pokemon[TYPES];
     int draCho;
     int i = 0;
-        //declare health variables
-    int curChp, curPhp;
-    
-    //outputs for reseting health
-    ofstream outChp;//Output / out used can be anything but its used for file
-    ofstream outPhp;//Output / out used can be anything but its used for file
 
     sleep(3);
-
-    outChp.open("compHp.dat");
-    curChp = 150;
-    outChp << curChp;    
-    outPhp.open("plyrHp.dat");
-    curPhp = 150;
-    outPhp << curPhp;
-    outPhp.close();
-    outChp.close();
     
+    restHealth();
     menutxt();
     dragchoi(pokemon, draCho, i);
 }
@@ -1121,7 +1066,21 @@ void wMenu()
         }
     }
 }
-/* 
- * ***To-do List***
- * Weakness system?
- */
+
+void restHealth()
+{
+    int curChp, curPhp;
+    
+    //outputs for reseting health
+    ofstream outChp;//Output / out used can be anything but its used for file
+    ofstream outPhp;//Output / out used can be anything but its used for file
+    
+    outChp.open("compHp.dat");
+    curChp = 150;
+    outChp << curChp;    
+    outPhp.open("plyrHp.dat");
+    curPhp = 150;
+    outPhp << curPhp;
+    outPhp.close();
+    outChp.close();
+}
